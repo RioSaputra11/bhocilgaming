@@ -3,6 +3,7 @@ import { join } from 'path'
 import { xpRange } from '../lib/levelling.js'
 let tags = {
   'main': 'Main',
+  'anime': 'Anime',
   'game': 'Game',
   'rpg': 'RPG Games',
   'xp': 'Exp & Limit',
@@ -22,7 +23,6 @@ let tags = {
   'vote': 'Voting',
   'absen': 'Absen',
   'quran': 'Al Qur\'an',
-  'jadibot': 'Jadi Bot',
   'owner': 'Owner',
   'host': 'Host',
   'advanced': 'Advanced',
