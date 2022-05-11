@@ -1,17 +1,16 @@
-// xie hua piao piao batman membuka kulkas dan mngambil semangka lalu memberikan mayo di atas semangka
+let handler = async (m, { conn, usedPrefix, command }) => {
+let res = await fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/anime/neko.txt')
+let txt = await res.text()
 
-let fetch = require('node-fetch')
-let handler = async(m, { conn }) => {
-  let res = await fetch('https://api.waifu.pics/sfw/neko')
-  if (!res.ok) throw await res.text()
-  let json = await res.json()
-  if (!json.url) throw 'Error!'
-  conn.sendFile(m.chat, json.url, '', '*nyaaa*', m)
+let arr = txt.split('\n')
+let cita = arr[Math.floor(Math.random() * arr.length)]
+  await conn.sendBI(m.chat, `Nihh nekonya @${m.sender.split('@')[0]}`, wm, cita, [[`Next`, `${usedPrefix}${command}`]], m, {mentions: [m.sender], jpegThumbnail: await(await fetch(cita)).buffer()})
 }
-handler.help = ['neko']
 handler.tags = ['anime']
-handler.command = /^neko$/i
-handler.limit = true
+handler.help = ['neko']
+handler.command = /^(neko)$/i
+
 handler.register = true
+handler.limit = true
 
 module.exports = handler
