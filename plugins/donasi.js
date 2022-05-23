@@ -3,10 +3,10 @@ let handler =  m => m.reply(`
 │ • Telkomsel [082119094904]
 │ • Telkomsel [082119094904]
 ╰────
-
-╭─「 Donasi • Non Pulsa 」
-│ • Comming
-│ • Soon
+╭─「 NOTE 」
+│ • Ingin donasi? wa.me/6282117332347 hasil donasi akan dibelikan
+│ • RDP/VPS agar bot berjalan 24 tanpa kendala
+| • Terimakasih yang sudah mau berdonasi
 ╰────
 `.trim()) // Tambah sendiri kalo mau
 handler.help = ['donasi']
