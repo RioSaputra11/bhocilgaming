@@ -1,16 +1,18 @@
-let handler = async (m, { conn, usedPrefix, command }) => {
-let res = await fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/anime/neko.txt')
-let txt = await res.text()
+import fetch from 'node-fetch'
 
-let arr = txt.split('\n')
-let cita = arr[Math.floor(Math.random() * arr.length)]
-  await conn.sendBI(m.chat, `Nihh nekonya @${m.sender.split('@')[0]}`, wm, cita, [[`Next`, `${usedPrefix}${command}`]], m, {mentions: [m.sender], jpegThumbnail: await(await fetch(cita)).buffer()})
+let handler = async (m, { conn }) => {
+	let ne = await (await fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/anime/neko.txt')).text()
+    let nek = ne.split('\n')
+    let neko = pickRandom(nek)
+	conn.sendButton(m.chat, 'Nyaww~ 🐾💗', 'Ｒｙｏｂｏｔ－Ｍｄ V2', neko, [['Next','.neko']],m)
 }
+handler.command = /^(neko)$/i
 handler.tags = ['anime']
 handler.help = ['neko']
-handler.command = /^(neko)$/i
 
-handler.register = true
 handler.limit = true
 
-module.exports = handler
+export default handler
+function pickRandom(list) {
+  return list[Math.floor(Math.random() * list.length)]
+}
